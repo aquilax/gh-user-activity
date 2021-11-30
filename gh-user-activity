@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -e
+
+if [[ -z "$GH_USER" ]]; then
+  GH_USER=$(gh api user --template="{{- print .login -}}")
+  if [[ $? -ne 0 ]]; then
+    echo "${GH_USER}"
+    exit 1
+  fi
+fi
+
+TEMPLATE='
+  {{- range $event := . -}}
+		{{- printf "%s [%s] %s\n" $event.created_at $event.type $event.repo.url -}}
+	{{- end -}}
+'
+
+gh api -H 'accept: application/vnd.github.v3+json' "users/$GH_USER/events" --template="${TEMPLATE}"
