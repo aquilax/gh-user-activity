@@ -11,7 +11,7 @@ fi
 
 TEMPLATE='
   {{- range $event := . -}}
-		{{- printf "%s [%s] %s\n" $event.created_at $event.type $event.repo.url -}}
+		{{- printf "%s [%s] %s\n" $event.created_at $event.type $event.repo.name -}}
 	{{- end -}}
 '
 
