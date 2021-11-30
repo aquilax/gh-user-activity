@@ -15,4 +15,4 @@ TEMPLATE='
 	{{- end -}}
 '
 
-gh api -H 'accept: application/vnd.github.v3+json' "users/$GH_USER/events" --template="${TEMPLATE}"
+gh api -H 'accept: application/vnd.github.v3+json' "users/$GH_USER/events?per_page=100" --template="${TEMPLATE}"
