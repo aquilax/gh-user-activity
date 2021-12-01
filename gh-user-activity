@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 set -e
 
+GH_USER=$1
+
 if [[ -z "$GH_USER" ]]; then
-  GH_USER=$(gh api user --template="{{- print .login -}}")
-  if [[ $? -ne 0 ]]; then
+  if ! GH_USER=$(gh api user --template="{{- print .login -}}"); then
     echo "${GH_USER}"
     exit 1
   fi
 fi
 
+# shellcheck disable=SC2016
 TEMPLATE='
   {{- range $event := . -}}
 		{{- printf "%s [%s] %s\n" $event.created_at $event.type $event.repo.name -}}
