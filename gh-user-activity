@@ -13,8 +13,8 @@ fi
 # shellcheck disable=SC2016
 TEMPLATE='
   {{- range $event := . -}}
-		{{- printf "%s [%s] %s\n" $event.created_at $event.type $event.repo.name -}}
-	{{- end -}}
+    {{- printf "%s [%s] %s\n" $event.created_at $event.type $event.repo.name -}}
+  {{- end -}}
 '
 
 gh api -H 'accept: application/vnd.github.v3+json' "users/$GH_USER/events?per_page=100" --template="${TEMPLATE}"

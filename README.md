@@ -1,22 +1,21 @@
 # gh-user-activity
 
-
 ## Installation
 
-```
+```sh
 gh extension install aquilax/gh-user-activity
 ```
 
 ## Upgrading
 
-```
+```sh
 gh extension upgrade aquilax/gh-user-activity
 ```
 
 ## Usage
 
-```
-$ gh user-activity 
+```sh
+$ gh user-activity
 2021-11-30T05:00:33Z [PushEvent] aquilax/gh-user-activity
 2021-11-30T04:59:33Z [CreateEvent] aquilax/gh-user-activity
 2021-11-30T04:55:30Z [CreateEvent] aquilax/gh-user-activity
@@ -47,6 +46,4 @@ $ gh user-activity
 2021-11-20T08:50:14Z [PushEvent] aquilax/cooklang-go
 2021-11-19T20:45:44Z [CreateEvent] aquilax/cooklang-go
 2021-11-19T20:44:57Z [PushEvent] aquilax/cooklang-go
-
 ```
-
