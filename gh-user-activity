@@ -2,6 +2,7 @@
 set -e
 
 GH_USER=$1
+GH_PAGES=${2:-3}
 
 if [[ -z "$GH_USER" ]]; then
   if ! GH_USER=$(gh api user --template="{{- print .login -}}"); then
@@ -17,4 +18,7 @@ TEMPLATE='
   {{- end -}}
 '
 
-gh api -H 'accept: application/vnd.github.v3+json' "users/$GH_USER/events?per_page=100" --template="${TEMPLATE}"
+for a in $(eval echo "{1..$GH_PAGES}")
+do
+  gh api -H 'accept: application/vnd.github.v3+json' "users/$GH_USER/events?per_page=100&page=$a" --template="${TEMPLATE}" || echo ok
+done
