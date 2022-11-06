@@ -20,5 +20,5 @@ TEMPLATE='
 
 for a in $(eval echo "{1..$GH_PAGES}")
 do
-  gh api -H 'accept: application/vnd.github.v3+json' "users/$GH_USER/events?per_page=100&page=$a" --template="${TEMPLATE}" || echo ok
+  gh api -H 'accept: application/vnd.github.v3+json' "users/$GH_USER/events?per_page=100&page=$a" --template="${TEMPLATE}"
 done
